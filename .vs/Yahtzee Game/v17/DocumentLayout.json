@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\HFGF\\source\\repos\\Yahtzee Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|Yahtzee Game.csproj|c:\\users\\hfgf\\source\\repos\\yahtzee game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|Yahtzee Game.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|YahtzeeGame.csproj|c:\\users\\hfgf\\source\\repos\\yahtzee game\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|YahtzeeGame.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|Yahtzee Game.csproj|c:\\users\\hfgf\\source\\repos\\yahtzee game\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|Yahtzee Game.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|YahtzeeGame.csproj|c:\\users\\hfgf\\source\\repos\\yahtzee game\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|YahtzeeGame.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|Yahtzee Game.csproj|c:\\users\\hfgf\\source\\repos\\yahtzee game\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|Yahtzee Game.csproj|solutionrelative:dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|YahtzeeGame.csproj|c:\\users\\hfgf\\source\\repos\\yahtzee game\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41D18A32-7CE2-4708-8169-AF44AD47CF7F}|YahtzeeGame.csproj|solutionrelative:dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Player.cs",
               "ToolTip": "C:\\Users\\HFGF\\source\\repos\\Yahtzee Game\\Player.cs",
               "RelativeToolTip": "Player.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAAQwF8AAAAAAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAiwBoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-19T07:11:03.988Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\HFGF\\source\\repos\\Yahtzee Game\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAcwF4AAAAMAAAA",
+              "ViewState": "AQIAAPIAAAAAAAAAAAAWwEMBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-19T06:40:10.03Z",
               "EditorCaption": ""
@@ -60,8 +60,7 @@
               "RelativeToolTip": "Dice.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T06:40:59.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T06:40:59.904Z"
             }
           ]
         }

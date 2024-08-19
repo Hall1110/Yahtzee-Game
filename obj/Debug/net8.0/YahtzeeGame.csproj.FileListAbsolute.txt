@@ -1,0 +1,15 @@
+C:\Users\HFGF\source\repos\Yahtzee Game\bin\Debug\net8.0\YahtzeeGame.exe
+C:\Users\HFGF\source\repos\Yahtzee Game\bin\Debug\net8.0\YahtzeeGame.deps.json
+C:\Users\HFGF\source\repos\Yahtzee Game\bin\Debug\net8.0\YahtzeeGame.runtimeconfig.json
+C:\Users\HFGF\source\repos\Yahtzee Game\bin\Debug\net8.0\YahtzeeGame.dll
+C:\Users\HFGF\source\repos\Yahtzee Game\bin\Debug\net8.0\YahtzeeGame.pdb
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.AssemblyInfoInputs.cache
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.AssemblyInfo.cs
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.csproj.CoreCompileInputs.cache
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.sourcelink.json
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.dll
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\refint\YahtzeeGame.dll
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.pdb
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\YahtzeeGame.genruntimeconfig.cache
+C:\Users\HFGF\source\repos\Yahtzee Game\obj\Debug\net8.0\ref\YahtzeeGame.dll
