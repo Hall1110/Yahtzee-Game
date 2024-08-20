@@ -98,6 +98,9 @@
                     Yahtzee = score;
                     break;
 
+                case "NoDice":
+                    break;
+
                 default:
                     throw new ArgumentException("Invalid score category, ", nameof(scoreCategory));
                           
@@ -105,6 +108,14 @@
             TotalSumScore();
         }
 
+
+
+        public void TotalSumScore()
+        {
+            UpperSectionScore();
+            LowerSectionScore();
+            TotalScore += UpperSection + LowerSection;
+        }
 
 
         public void UpperSectionScore()
@@ -119,17 +130,12 @@
         }
 
 
+
         public void LowerSectionScore()
         {
             LowerSection += Chance + ThreeOfAKind + FourOfAKind + FullHouse + SmallStraight + LargeStraight + Yahtzee;
         }
 
 
-        public void TotalSumScore()
-        {
-            UpperSectionScore();
-            LowerSectionScore();
-            TotalScore += UpperSection + LowerSection;
-        }
     }
 }
