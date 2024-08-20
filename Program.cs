@@ -7,27 +7,27 @@
             
         }
 
-/*
-REGLER
-13 runder
-hver spiller ruller terninger 3 gange, med mulighed for at slutte sin runde før 3. gang
-spiller skal kunne gemme terninger (muligvis re-roll terninger, senere implementering)
+        /*
+        REGLER
+        13 runder
+        hver spiller ruller terninger 3 gange, med mulighed for at slutte sin runde før 3. gang
+        spiller skal kunne gemme terninger (muligvis re-roll terninger, senere implementering)
 
-SCORECARD
-Upper Scorecard!
-1'ere, 2'ere etc. mindst 2 ens, scoren er summen af tallene
-bonus for upper scorecard er en sum på mindst 63 eller mere
-tag sum af uppercard
+        SCORECARD
+        Upper Scorecard!
+        1'ere, 2'ere etc. mindst 2 ens, scoren er summen af tallene
+        bonus for upper scorecard er en sum på mindst 63 eller mere
+        tag sum af uppercard
 
-Lower Scorecard!
-Chance: summen af en combination af dice
-3 ens, 4 ens. mindst tre/fire ens, scoren er summen af de matchende dice
-full house. 3 ens af et tal, 2 ens af et andet tal scoren er 25
-small straight. 1-4, 2-5, 3-6. score er 30
-large straight. 1-5, 2-6. Score er 40
-yahtzee. alle dice er ens. Score er 50
-tag summen af lower card
-*/
+        Lower Scorecard!
+        Chance: summen af en combination af dice
+        3 ens, 4 ens. mindst tre/fire ens, scoren er summen af de matchende dice
+        full house. 3 ens af et tal, 2 ens af et andet tal scoren er 25
+        small straight. 1-4, 2-5, 3-6. score er 30
+        large straight. 1-5, 2-6. Score er 40
+        yahtzee. alle dice er ens. Score er 50
+        tag summen af lower card
+        */
 
         static void RunProgram()
         {
@@ -45,7 +45,7 @@ tag summen af lower card
 
             while (roundCounter >= TotalRounds)
             {
-                
+
 
 
                 roundCounter++;
@@ -53,7 +53,7 @@ tag summen af lower card
         }
 
 
-        
+
         public static void ClearLine()
         {
             Console.SetCursorPosition(0, Console.CursorTop);
@@ -72,7 +72,7 @@ tag summen af lower card
             {
                 playerHand[i] = dice.Roll();
             }
-            
+
         }
 
 
@@ -80,7 +80,7 @@ tag summen af lower card
         public static void CheckHand(int[] playerHand)
         {
             Array.Sort(playerHand);
-            int playerHandLength = playerHand.Length;
+
 
             /*
             Check matching 
@@ -104,7 +104,7 @@ tag summen af lower card
             }
             for (int i = 0; i < acesAmount; i++)
             {
-                acesSum =+ 1;
+                acesSum += 1;
             }
 
             return acesSum;
@@ -126,7 +126,7 @@ tag summen af lower card
             }
             for (int i = 0; i < TwosAmount; i++)
             {
-                TwosSum = +1;
+                TwosSum += 2;
             }
 
             return TwosSum;
@@ -149,7 +149,7 @@ tag summen af lower card
             }
             for (int i = 0; i < threesAmount; i++)
             {
-                threesSum = +1;
+                threesSum += 3;
             }
 
             return threesSum;
@@ -172,7 +172,7 @@ tag summen af lower card
             }
             for (int i = 0; i < foursAmount; i++)
             {
-                foursSum = +1;
+                foursSum += 4;
             }
 
             return foursSum;
@@ -195,7 +195,7 @@ tag summen af lower card
             }
             for (int i = 0; i < fivesAmount; i++)
             {
-                fivesSum = +1;
+                fivesSum += 5;
             }
 
             return fivesSum;
@@ -219,7 +219,7 @@ tag summen af lower card
             }
             for (int i = 0; i < sixesAmount; i++)
             {
-                sixesSum = +1;
+                sixesSum += 6;
             }
 
             return sixesSum;
@@ -238,7 +238,7 @@ tag summen af lower card
             }
             return chanceSum;
         }
-        
+
 
 
         public static int ThreeOfAKind(int[] playerHand)
@@ -255,6 +255,7 @@ tag summen af lower card
                 if (firstValue == secondValue && secondValue == thirdValue)
                 {
                     threeOfAKindSum += firstValue + secondValue + thirdValue;
+                    break;
                 }
             }
             return threeOfAKindSum;
@@ -277,6 +278,8 @@ tag summen af lower card
                 if (firstValue == secondValue && secondValue == thirdValue && thirdValue == fourthValue)
                 {
                     fourOfAKindSum += firstValue + secondValue + thirdValue + fourthValue;
+                    break;
+
                 }
             }
             return fourOfAKindSum;
@@ -286,42 +289,94 @@ tag summen af lower card
 
         public static int FullHouse(int[] playerHand)
         {
-            bool twoMatching = false;
+            int firstValue = playerHand[0];
+            int secondValue = playerHand[1];
+            int thirdValue = playerHand[2];
+            int fourthValue = playerHand[3];
+            int fifthValue = playerHand[4];
             bool threeMatching = false;
-            int playerHandLength = playerHand.Length;
-            int firstIndexedValue = playerHand[0];
-            int lastIndexedValue = playerHand[4];
-            
+            bool twoMatching = false;
 
-            for (int i = 2; i < playerHandLength; i++)
+            if ((firstValue == secondValue && secondValue == thirdValue) || thirdValue == fourthValue && fourthValue == fifthValue)
             {
-                if ((firstIndexedValue == playerHand[i - 1] && firstIndexedValue == playerHand[i]) 
-                    || 
-                   lastIndexedValue == playerHand[i - 1] && lastIndexedValue == playerHand[i - 2])
-                {
-                    threeMatching = true;
-                }
-                else if ((firstIndexedValue == playerHand[i - 1]) || lastIndexedValue == playerHand[i - 1]) // skuffed
-                {
-                    twoMatching = true;
-                }
-                else
-                {
-                    return 0;
-                }
+                threeMatching = true;
             }
-
+            if ((firstValue == secondValue) || fourthValue == fifthValue)
+            {
+                twoMatching = true;
+            }
             if (twoMatching && threeMatching)
             {
-            return 25;
+                return 25;
             }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
 
 
+
+        public static int SmallStraight(int[] playerHand)
+        {
+            int playerHandLength = playerHand.Length;
+
+            for (int i = 3; i < playerHandLength; i++)
+            {
+                int firstValue = playerHand[i - 3];
+                int secondValue = playerHand[i - 2];
+                int thirdValue = playerHand[i - 1];
+                int fourthValue = playerHand[i];
+
+                if (firstValue == secondValue - 1 && firstValue == thirdValue - 2 && firstValue == fourthValue - 3)
+                {
+                    return 30;
+                }
+            }
+            return 0;
+        }
+
+
+
+        public static int LargeStraight(int[] playerHand)
+        {
+            int playerHandLength = playerHand.Length;
+
+            for (int i = 4; i < playerHandLength; i++)
+            {
+                int firstValue = playerHand[i - 4];
+                int secondValue = playerHand[i - 3];
+                int thirdValue = playerHand[i - 2];
+                int fourthValue = playerHand[i - 1];
+                int fifthValue = playerHand[i];
+
+
+                if (firstValue == secondValue - 1 && firstValue == thirdValue - 2 && firstValue == fourthValue - 3 && firstValue == fifthValue - 4)
+                {
+                    return 40;
+                }
+            }
+            return 0;
+        }
+
+
+
+        public static int Yahtzee(int[] playerHand)
+        {
+            int playerHandLength = playerHand.Length;
+            int firstIndex = playerHand[0];
+            int counter = 0;
+
+            for (int i = 0; i < playerHandLength; i++)
+            {
+                if (firstIndex == playerHand[i])
+                {
+                    counter++;
+                }
+            }
+            if (counter == 5)
+            {
+                return 50;
+            }
+            return 0;
+        }
     }
 }
 

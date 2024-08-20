@@ -23,26 +23,26 @@
 
         public Player()
         {
-            UpperSection = 0;
-            Aces = 0;
-            Twos = 0;
-            Threes = 0;
-            Fours = 0;
-            Fives = 0;
-            Sixes = 0;
-            LowerSection = 0;
-            Chance = 0;
-            ThreeOfAKind = 0;
-            FourOfAKind = 0;
-            FullHouse = 0;
-            SmallStraight = 0;
-            LargeStraight = 0;
-            Yahtzee = 0;
-            TotalScore = 0;
+            //UpperSection = 0;
+            //Aces = 0;
+            //Twos = 0;
+            //Threes = 0;
+            //Fours = 0;
+            //Fives = 0;
+            //Sixes = 0;
+            //LowerSection = 0;
+            //Chance = 0;
+            //ThreeOfAKind = 0;
+            //FourOfAKind = 0;
+            //FullHouse = 0;
+            //SmallStraight = 0;
+            //LargeStraight = 0;
+            //Yahtzee = 0;
+            //TotalScore = 0;
         }
 
 
-        public void ChangeScore(string scoreCategory, int score)
+        public void UpdateScore(string scoreCategory, int score)
         {
             switch (scoreCategory)
             {
@@ -102,13 +102,20 @@
                     throw new ArgumentException("Invalid score category, ", nameof(scoreCategory));
                           
             }
+            TotalSumScore();
         }
 
 
 
         public void UpperSectionScore()
         {
+            const int Bonus = 35;
+
             UpperSection += Aces + Twos + Threes + Fours + Fives + Sixes;
+            if (UpperSection >= 63)
+            {
+                UpperSection += Bonus;
+            }
         }
 
 
@@ -120,6 +127,8 @@
 
         public void TotalSumScore()
         {
+            UpperSectionScore();
+            LowerSectionScore();
             TotalScore += UpperSection + LowerSection;
         }
     }
