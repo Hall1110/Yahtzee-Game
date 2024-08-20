@@ -42,67 +42,67 @@
         }
 
 
-        public void UpdateScore(string scoreCategory, int score)
+        public void UpdateScore((string scoreCategory, int score) scoreTuple)
         {
-            switch (scoreCategory)
+            switch (scoreTuple.scoreCategory)
             {
                 case "Aces":
-                    Aces = score;
+                    Aces = scoreTuple.score;
                     break;
 
                 case "Twos":
-                    Twos = score;
+                    Twos = scoreTuple.score;
                     break;
 
                 case "Threes":
-                    Threes = score;
+                    Threes = scoreTuple.score;
                     break;
 
                 case "Fours":
-                    Fours = score;
+                    Fours = scoreTuple.score;
                     break;
 
                 case "Fives":
-                    Fives = score;
+                    Fives = scoreTuple.score;
                     break;
 
                 case "Sixes":
-                    Sixes = score;
+                    Sixes = scoreTuple.score;
                     break;
 
                 case "Chance":
-                    Chance = score;
+                    Chance = scoreTuple.score;
                     break;
 
                 case "ThreeOfAKind":
-                    ThreeOfAKind = score;
+                    ThreeOfAKind = scoreTuple.score;
                     break;
 
                 case "FourOfAKind":
-                    FourOfAKind = score;
+                    FourOfAKind = scoreTuple.score;
                     break;
 
                 case "FullHouse":
-                    FullHouse = score;
+                    FullHouse = scoreTuple.score;
                     break;
 
                 case "SmallStraight":
-                    SmallStraight = score;
+                    SmallStraight = scoreTuple.score;
                     break;
 
                 case "LargeStraight":
-                    LargeStraight = score;
+                    LargeStraight = scoreTuple.score;
                     break;
 
                 case "Yahtzee":
-                    Yahtzee = score;
+                    Yahtzee = scoreTuple.score;
                     break;
 
                 case "NoDice":
                     break;
 
                 default:
-                    throw new ArgumentException("Invalid score category, ", nameof(scoreCategory));
+                    throw new ArgumentException("Invalid score category, ", nameof(scoreTuple.scoreCategory));
                           
             }
             TotalSumScore();

@@ -4,45 +4,132 @@
     {
         static void Main()
         {
-            PlayerTurn();
+            RunProgram();
+            
         }
 
 
 
         static void RunProgram()
         {
+            Player playerOne = new Player();
+            int[] playerOneHand = new int[5];
+
             int roundCounter = 0;
             const int TotalRounds = 13;
-            Player playerOne = new Player();
+            string currentInput = "";
+
+            (string, int) result = ("", 0);
 
 
-            while (roundCounter >= TotalRounds)
+            for (int i = 0; i <= TotalRounds; i++)
             {
-                for(int i = 0; i <= TotalRounds; i++)
+                Console.WriteLine($"Playing round {roundCounter} out of 13");
+                
+                PlayerTurn(playerOneHand);
+
+                Console.WriteLine("Player One, which score would you like to input?");
+                Console.WriteLine("");
+                currentInput = Console.ReadLine();
+                
+                switch (currentInput)
                 {
+                    case "aces":
+                        result = CheckMatchingAces(playerOneHand);
+                        break;
 
+                    case "twos":
+                        result = CheckMatchingTwos(playerOneHand);
+                        break;
 
+                    case "threes":
+                        result = CheckMatchingThrees(playerOneHand);
+                        break;
 
+                    case "fours":
+                        result = CheckMatchingFours(playerOneHand);
+                        break;
+
+                    case "fives":
+                        result = CheckMatchingFives(playerOneHand);
+                        break;
+
+                    case "sixes":
+                        result = CheckMatchingSixes(playerOneHand);
+                        break;
+
+                    case "chance":
+                        result = UseChance(playerOneHand);
+                        break;
+
+                    case "full house":
+                        result = FullHouse(playerOneHand);
+                        break;
+
+                    case "three of a kind":
+                        result = ThreeOfAKind(playerOneHand);
+                        break;
+
+                    case "four of a kind":
+                        result = FourOfAKind(playerOneHand);
+                        break;
+
+                    case "small straight":
+                        result = SmallStraight(playerOneHand);
+                        break;
+
+                    case "large straight":
+                        result = LargeStraight(playerOneHand);
+                        break;
+
+                    case "yahtzee":
+                        result = Yahtzee(playerOneHand);
+                        break;
                 }
+                playerOne.UpdateScore(result);
+                Console.Clear();
                 roundCounter++;
             }
+
         }
 
-        public static void PlayerTurn()
+        public static void PlayerTurn(int[] playerHand)  // skal sikkert ændres lidt
         {
-            int[] playerHand = new int[5];
+            
             GetNewHand(playerHand);
-            DisplayHand(playerHand);
             int turnCounter = 0;
             const int TotalTurns = 3;
+            bool endTurnEarly = false;
+            string currentInput = "";
 
-            
 
-            for (int i = 0; i <= TotalTurns; i++)
+            while (!endTurnEarly && turnCounter <= TotalTurns)
             {
+                
+                Console.WriteLine($"Playing turn {turnCounter} out of 3\n");
+                Console.WriteLine("Your current hand is ");
+                DisplayHand(playerHand);
+                Console.WriteLine("What action would you like to take?\n");
+                Console.WriteLine("Type end turn to end turn early.");
+                Console.WriteLine("Type reroll to reroll your dice.");
+                currentInput = Console.ReadLine().ToLower();
 
+                switch (currentInput)
+                {
+                    case "reroll":
+                        RerollDice(playerHand);
+                        turnCounter++;
+                        Console.Clear();
+                        continue;
 
-                turnCounter++;
+                    case "end turn":
+                        endTurnEarly = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid input, please try again.");
+                        break;
+                }
             }
         }
 
@@ -51,7 +138,6 @@
         public static int[] GetNewHand(int[] playerHand)
         {
             Dice dice = new Dice();
-
             int playerHandLength = playerHand.Length;
 
             for (int i = 0; i < playerHandLength; i++)
@@ -66,7 +152,7 @@
 
         public static void DisplayHand(int[] playerHand)
         {
-            string commaSeparated =  "";
+            string commaSeparated = "";
             foreach (int value in playerHand)
             {
                 commaSeparated += value + ", ";
@@ -77,11 +163,37 @@
 
 
 
-        public static void RerollDice()
+        public static int[] RerollDice(int[] playerHand)
         {
+            Dice dice = new Dice();
+            int playerHandLength = playerHand.Length;
+            string currentInput = "";
 
+            for (int i = 0; i < playerHandLength; i++)
+            {
 
+                Console.WriteLine($"You have {playerHand[i]}");
+                Console.WriteLine("Reroll dice y/n");
+                currentInput = Console.ReadLine().ToLower();
 
+                switch (currentInput)
+                {
+                    case "y":
+                        playerHand[i] = dice.Roll();
+                        Console.WriteLine($"You got {playerHand[i]}\n");
+                        continue;
+
+                    case "n":
+                        Console.WriteLine($"Keeping {playerHand[i]}\n");
+                        continue;
+
+                    default:
+                        Console.WriteLine("Invalid input, please try again.");
+                        continue;
+                }
+            }
+            Array.Sort(playerHand);
+            return playerHand;
         }
 
 
@@ -106,7 +218,7 @@
             if (acesSum != 0)
             {
                 return ("Aces", acesSum);
-            } 
+            }
             return ("NoDice", acesSum);
         }
 
@@ -325,8 +437,8 @@
             bool threeMatching = false;
             bool twoMatching = false;
 
-            if ((firstValue == secondValue && secondValue == thirdValue && firstValue != fourthValue) 
-                || 
+            if ((firstValue == secondValue && secondValue == thirdValue && firstValue != fourthValue)
+                ||
                 thirdValue == fourthValue && fourthValue == fifthValue && thirdValue != secondValue)
             {
                 threeMatching = true;
