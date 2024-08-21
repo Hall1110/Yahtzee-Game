@@ -2,12 +2,12 @@
 {
     internal class Program
     {
-        
-        
+
+
 
         static void Main()
         {
-            
+
             RunProgram();
 
         }
@@ -16,15 +16,10 @@
 
         static void RunProgram()
         {
-            //Player playerOne = new Player();
             int[] playerOneHand = new int[5];
-
             int roundCounter = 0;
             const int TotalRounds = 13;
             (string, int) result = ("", 0);
-
-
-
 
             for (int i = 0; i <= TotalRounds; i++)
             {
@@ -58,17 +53,14 @@
 
         public static void PlayerTurn(int[] playerHand)
         {
-
             GetNewHand(playerHand);
             int turnCounter = 0;
             const int TotalTurns = 3;
             bool endTurnEarly = false;
             string currentInput = "";
 
-
             while (!endTurnEarly && turnCounter < TotalTurns)
             {
-
                 Console.WriteLine($"Playing turn {turnCounter + 1} out of 3\n");
                 Console.WriteLine("Your current hand is ");
                 DisplayHand(playerHand);
@@ -77,7 +69,6 @@
                 Console.WriteLine("\nWhat action would you like to take?\n");
                 Console.WriteLine("Type end turn to end turn early.");
                 Console.WriteLine("Type reroll to reroll your dice.\n");
-                
                 currentInput = Console.ReadLine().ToLower();
 
                 switch (currentInput)
@@ -170,7 +161,6 @@
             string currentInput = "";
             (string, int) result = ("", 0);
             bool reEvaluteValidInput = true;
-
 
             do
             {
@@ -353,9 +343,7 @@
                 {
                     Console.WriteLine("No match in your selected category, try another one, or type skip.");
                 }
-
             } while (!reEvaluteValidInput);
-
             return result;
         }
 
@@ -512,7 +500,6 @@
             {
                 sixesSum += 6;
             }
-
             if (sixesAmount > 0)
             {
                 return ("Sixes", sixesSum);
@@ -652,7 +639,6 @@
                 int fourthValue = playerHand[i - 1];
                 int fifthValue = playerHand[i];
 
-
                 if (firstValue == secondValue - 1 && firstValue == thirdValue - 2 && firstValue == fourthValue - 3 && firstValue == fifthValue - 4)
                 {
                     return ("LargeStraight", 40);
@@ -690,6 +676,6 @@
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, Console.CursorTop);
-        }
+        } // aldrig brugt
     }
 }
