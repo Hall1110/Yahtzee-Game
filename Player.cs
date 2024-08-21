@@ -1,15 +1,16 @@
-﻿namespace YahtzeeGame
+﻿using System.Reflection;
+
+namespace YahtzeeGame
 {
     internal class Player
     {
-        public int UpperSection { get; set; }
         public int Aces { get; set; }
         public int Twos { get; set; }
         public int Threes { get; set; }
         public int Fours { get; set; }
         public int Fives { get; set; }
         public int Sixes { get; set; }
-        public int LowerSection { get; set; }
+        public int UpperSection { get; set; }
         public int Chance { get; set; }
         public int ThreeOfAKind { get; set; }
         public int FourOfAKind { get; set; }
@@ -17,6 +18,7 @@
         public int SmallStraight { get; set; }
         public int LargeStraight { get; set; }
         public int Yahtzee { get; set; }
+        public int LowerSection { get; set; }
         public int TotalScore { get; set; }
 
 
@@ -40,6 +42,7 @@
             //Yahtzee = 0;
             //TotalScore = 0;
         }
+
 
 
         public void UpdateScore((string scoreCategory, int score) scoreTuple)
@@ -110,12 +113,25 @@
 
 
 
+        public void DisplayScoreboard()
+        {
+            Type type = typeof(Player);
+            PropertyInfo[] scoreBoard = type.GetProperties();
+            foreach (PropertyInfo property in scoreBoard)
+            {
+                Console.WriteLine($"{property.Name}: {property.GetValue(this)}");
+            }
+        }
+
+
+
         public void TotalSumScore()
         {
             UpperSectionScore();
             LowerSectionScore();
             TotalScore += UpperSection + LowerSection;
         }
+
 
 
         public void UpperSectionScore()
@@ -135,7 +151,5 @@
         {
             LowerSection += Chance + ThreeOfAKind + FourOfAKind + FullHouse + SmallStraight + LargeStraight + Yahtzee;
         }
-
-
     }
 }

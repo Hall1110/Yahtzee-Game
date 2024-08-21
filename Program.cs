@@ -88,10 +88,16 @@
                 }
                 playerOne.UpdateScore(result);
                 Console.Clear();
+                playerOne.DisplayScoreboard();
+                Console.WriteLine("\nPress any key to continue.");
+                Console.ReadLine();
+                Console.Clear();
                 roundCounter++;
             }
 
         }
+
+
 
         public static void PlayerTurn(int[] playerHand)  // skal sikkert ændres lidt
         {
@@ -223,6 +229,7 @@
         }
 
 
+
         public static (string, int) CheckMatchingTwos(int[] playerHand)
         {
             int playerHandLength = playerHand.Length;
@@ -328,7 +335,6 @@
             }
             return ("NoDice", fivesSum);
         }
-
 
 
 
@@ -530,5 +536,3 @@
         }
     }
 }
-
-
