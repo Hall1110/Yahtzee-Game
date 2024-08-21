@@ -2,18 +2,21 @@
 {
     internal class Program
     {
+        
+        
+
         static void Main()
         {
-            RunProgram();
             
+            RunProgram();
 
         }
 
-
+        private static Player playerOne = new Player();
 
         static void RunProgram()
         {
-            Player playerOne = new Player();
+            //Player playerOne = new Player();
             int[] playerOneHand = new int[5];
 
             int roundCounter = 0;
@@ -37,7 +40,6 @@
                 playerOne.DisplayScoreboard();
 
 
-                // Check valid input
                 result = CheckValidInput(playerOneHand);
 
 
@@ -70,9 +72,12 @@
                 Console.WriteLine($"Playing turn {turnCounter + 1} out of 3\n");
                 Console.WriteLine("Your current hand is ");
                 DisplayHand(playerHand);
-                Console.WriteLine("What action would you like to take?\n");
+                Console.WriteLine("");
+                playerOne.DisplayScoreboard();
+                Console.WriteLine("\nWhat action would you like to take?\n");
                 Console.WriteLine("Type end turn to end turn early.");
-                Console.WriteLine("Type reroll to reroll your dice.");
+                Console.WriteLine("Type reroll to reroll your dice.\n");
+                
                 currentInput = Console.ReadLine().ToLower();
 
                 switch (currentInput)
