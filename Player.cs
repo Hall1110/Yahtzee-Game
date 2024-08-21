@@ -47,6 +47,8 @@ namespace YahtzeeGame
 
         public void UpdateScore((string scoreCategory, int score) scoreTuple)
         {
+
+
             switch (scoreTuple.scoreCategory)
             {
                 case "Aces":
@@ -106,7 +108,7 @@ namespace YahtzeeGame
 
                 default:
                     throw new ArgumentException("Invalid score category, ", nameof(scoreTuple.scoreCategory));
-                          
+
             }
             TotalSumScore();
         }
@@ -129,16 +131,14 @@ namespace YahtzeeGame
         {
             UpperSectionScore();
             LowerSectionScore();
-            TotalScore += UpperSection + LowerSection;
+            TotalScore = UpperSection + LowerSection;
         }
-
-
 
         public void UpperSectionScore()
         {
             const int Bonus = 35;
 
-            UpperSection += Aces + Twos + Threes + Fours + Fives + Sixes;
+            UpperSection = Aces + Twos + Threes + Fours + Fives + Sixes;
             if (UpperSection >= 63)
             {
                 UpperSection += Bonus;
@@ -149,7 +149,7 @@ namespace YahtzeeGame
 
         public void LowerSectionScore()
         {
-            LowerSection += Chance + ThreeOfAKind + FourOfAKind + FullHouse + SmallStraight + LargeStraight + Yahtzee;
+            LowerSection = Chance + ThreeOfAKind + FourOfAKind + FullHouse + SmallStraight + LargeStraight + Yahtzee;
         }
     }
 }

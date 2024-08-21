@@ -6,6 +6,7 @@
         {
             RunProgram();
             
+
         }
 
 
@@ -17,81 +18,29 @@
 
             int roundCounter = 0;
             const int TotalRounds = 13;
-            string currentInput = "";
-
             (string, int) result = ("", 0);
+
+
 
 
             for (int i = 0; i <= TotalRounds; i++)
             {
                 Console.WriteLine($"Playing round {roundCounter} out of 13");
-                
+
                 PlayerTurn(playerOneHand);
 
                 Console.Clear();
                 Console.WriteLine("Player, which score would you like to input?");
-                Console.Write("You hand ");
+                Console.Write("Your hand ");
                 DisplayHand(playerOneHand);
-                currentInput = Console.ReadLine();
-                
-                switch (currentInput)
-                {
-                    case "aces":
-                        result = CheckMatchingAces(playerOneHand);
-                        break;
+                Console.WriteLine("\n");
+                playerOne.DisplayScoreboard();
 
-                    case "twos":
-                        result = CheckMatchingTwos(playerOneHand);
-                        break;
 
-                    case "threes":
-                        result = CheckMatchingThrees(playerOneHand);
-                        break;
+                // Check valid input
+                result = CheckValidInput(playerOneHand);
 
-                    case "fours":
-                        result = CheckMatchingFours(playerOneHand);
-                        break;
 
-                    case "fives":
-                        result = CheckMatchingFives(playerOneHand);
-                        break;
-
-                    case "sixes":
-                        result = CheckMatchingSixes(playerOneHand);
-                        break;
-
-                    case "chance":
-                        result = UseChance(playerOneHand);
-                        break;
-
-                    case "full house":
-                        result = FullHouse(playerOneHand);
-                        break;
-
-                    case "three of a kind":
-                        result = ThreeOfAKind(playerOneHand);
-                        break;
-
-                    case "four of a kind":
-                        result = FourOfAKind(playerOneHand);
-                        break;
-
-                    case "small straight":
-                        result = SmallStraight(playerOneHand);
-                        break;
-
-                    case "large straight":
-                        result = LargeStraight(playerOneHand);
-                        break;
-
-                    case "yahtzee":
-                        result = Yahtzee(playerOneHand);
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid input, please try again.");
-                        break;
-                }
                 playerOne.UpdateScore(result);
                 Console.Clear();
                 playerOne.DisplayScoreboard();
@@ -105,9 +54,9 @@
 
 
 
-        public static void PlayerTurn(int[] playerHand)  // skal sikkert ændres lidt
+        public static void PlayerTurn(int[] playerHand)
         {
-            
+
             GetNewHand(playerHand);
             int turnCounter = 0;
             const int TotalTurns = 3;
@@ -117,7 +66,7 @@
 
             while (!endTurnEarly && turnCounter < TotalTurns)
             {
-                
+
                 Console.WriteLine($"Playing turn {turnCounter + 1} out of 3\n");
                 Console.WriteLine("Your current hand is ");
                 DisplayHand(playerHand);
@@ -186,7 +135,7 @@
                 Console.Clear();
                 DisplayHand(playerHand);
                 Console.WriteLine($"You have {playerHand[i]}");
-                Console.WriteLine("Reroll dice y/n");
+                Console.WriteLine("\nReroll dice y/n");
                 currentInput = Console.ReadLine().ToLower();
 
                 switch (currentInput)
@@ -211,6 +160,202 @@
 
 
 
+        public static (string, int) CheckValidInput(int[] playerHand)
+        {
+            string currentInput = "";
+            (string, int) result = ("", 0);
+            bool reEvaluteValidInput = true;
+
+
+            do
+            {
+                currentInput = Console.ReadLine();
+                switch (currentInput)
+                {
+                    case "aces":
+                        result = CheckMatchingAces(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "twos":
+                        result = CheckMatchingTwos(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "threes":
+                        result = CheckMatchingThrees(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "fours":
+                        result = CheckMatchingFours(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "fives":
+                        result = CheckMatchingFives(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "sixes":
+                        result = CheckMatchingSixes(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "chance":
+                        result = UseChance(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "full house":
+                        result = FullHouse(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "three of a kind":
+                        result = ThreeOfAKind(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "four of a kind":
+                        result = FourOfAKind(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "small straight":
+                        result = SmallStraight(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "large straight":
+                        result = LargeStraight(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "yahtzee":
+                        result = Yahtzee(playerHand);
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+
+                    case "skip":
+                        result = ("NoDice", 0);
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid input, please try again.");
+                        if (result == ("Invalid", 0) || result == ("", 0))
+                        {
+                            reEvaluteValidInput = false;
+                        }
+                        else
+                        {
+                            reEvaluteValidInput = true;
+                        }
+                        break;
+                }
+                if (!reEvaluteValidInput)
+                {
+                    Console.WriteLine("No match in your selected category, try another one, or type skip.");
+                }
+
+            } while (!reEvaluteValidInput);
+
+            return result;
+        }
+
+
+
         public static (string, int) CheckMatchingAces(int[] playerHand)
         {
             int playerHandLength = playerHand.Length;
@@ -228,11 +373,11 @@
             {
                 acesSum += 1;
             }
-            if (acesSum != 0)
+            if (acesAmount > 0)
             {
                 return ("Aces", acesSum);
             }
-            return ("NoDice", acesSum);
+            return ("Invalid", 0);
         }
 
 
@@ -255,11 +400,11 @@
                 TwosSum += 2;
             }
 
-            if (TwosSum != 0)
+            if (TwosAmount > 0)
             {
                 return ("Twos", TwosSum);
             }
-            return ("NoDice", TwosSum);
+            return ("Invalid", 0);
         }
 
 
@@ -282,11 +427,11 @@
                 threesSum += 3;
             }
 
-            if (threesSum != 0)
+            if (threesAmount > 0)
             {
                 return ("Threes", threesSum);
             }
-            return ("NoDice", threesSum);
+            return ("Invalid", 0);
         }
 
 
@@ -309,11 +454,11 @@
                 foursSum += 4;
             }
 
-            if (foursSum != 0)
+            if (foursAmount > 0)
             {
                 return ("Fours", foursSum);
             }
-            return ("NoDice", foursSum);
+            return ("Invalid", 0);
         }
 
 
@@ -336,11 +481,11 @@
                 fivesSum += 5;
             }
 
-            if (fivesSum != 0)
+            if (fivesAmount > 0)
             {
                 return ("Fives", fivesSum);
             }
-            return ("NoDice", fivesSum);
+            return ("Invalid", 0);
         }
 
 
@@ -363,11 +508,11 @@
                 sixesSum += 6;
             }
 
-            if (sixesSum != 0)
+            if (sixesAmount > 0)
             {
                 return ("Sixes", sixesSum);
             }
-            return ("NoDice", sixesSum);
+            return ("Invalid", 0);
         }
 
 
@@ -407,7 +552,7 @@
             {
                 return ("ThreeOfAKind", threeOfAKindSum);
             }
-            return ("NoDice", threeOfAKindSum);
+            return ("Invalid", 0);
         }
 
 
@@ -435,7 +580,7 @@
             {
                 return ("FourOfAKind", fourOfAKindSum);
             }
-            return ("NoDice", fourOfAKindSum);
+            return ("Invalid", 0);
         }
 
 
@@ -464,7 +609,7 @@
             {
                 return ("FullHouse", 25);
             }
-            return ("NoDice", 0);
+            return ("Invalid", 0);
         }
 
 
@@ -485,7 +630,7 @@
                     return ("SmallStraight", 30);
                 }
             }
-            return ("NoDice", 0);
+            return ("Invalid", 0);
         }
 
 
@@ -508,7 +653,7 @@
                     return ("LargeStraight", 40);
                 }
             }
-            return ("NoDice", 0);
+            return ("Invalid", 0);
         }
 
 
@@ -530,7 +675,7 @@
             {
                 return ("Yahtzee", 50);
             }
-            return ("NoDice", 0);
+            return ("Invalid", 0);
         }
 
 
