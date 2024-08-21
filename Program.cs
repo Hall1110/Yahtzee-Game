@@ -28,8 +28,10 @@
                 
                 PlayerTurn(playerOneHand);
 
-                Console.WriteLine("Player One, which score would you like to input?");
-                Console.WriteLine("");
+                Console.Clear();
+                Console.WriteLine("Player, which score would you like to input?");
+                Console.Write("You hand ");
+                DisplayHand(playerOneHand);
                 currentInput = Console.ReadLine();
                 
                 switch (currentInput)
@@ -85,6 +87,10 @@
                     case "yahtzee":
                         result = Yahtzee(playerOneHand);
                         break;
+
+                    default:
+                        Console.WriteLine("Invalid input, please try again.");
+                        break;
                 }
                 playerOne.UpdateScore(result);
                 Console.Clear();
@@ -109,10 +115,10 @@
             string currentInput = "";
 
 
-            while (!endTurnEarly && turnCounter <= TotalTurns)
+            while (!endTurnEarly && turnCounter < TotalTurns)
             {
                 
-                Console.WriteLine($"Playing turn {turnCounter} out of 3\n");
+                Console.WriteLine($"Playing turn {turnCounter + 1} out of 3\n");
                 Console.WriteLine("Your current hand is ");
                 DisplayHand(playerHand);
                 Console.WriteLine("What action would you like to take?\n");
@@ -177,7 +183,8 @@
 
             for (int i = 0; i < playerHandLength; i++)
             {
-
+                Console.Clear();
+                DisplayHand(playerHand);
                 Console.WriteLine($"You have {playerHand[i]}");
                 Console.WriteLine("Reroll dice y/n");
                 currentInput = Console.ReadLine().ToLower();
