@@ -2,17 +2,15 @@
 {
     internal class Program
     {
-
-
-
         static void Main()
         {
-
             RunProgram();
 
         }
 
+
         private static Player playerOne = new Player();
+        private static Dice dice = new Dice();
 
         static void RunProgram()
         {
@@ -94,7 +92,6 @@
 
         public static int[] GetNewHand(int[] playerHand)
         {
-            Dice dice = new Dice();
             int playerHandLength = playerHand.Length;
 
             for (int i = 0; i < playerHandLength; i++)
@@ -107,22 +104,8 @@
 
 
 
-        public static void DisplayHand(int[] playerHand)
-        {
-            string commaSeparated = "";
-            foreach (int value in playerHand)
-            {
-                commaSeparated += value + ", ";
-            }
-            commaSeparated = commaSeparated.TrimEnd(',', ' ');
-            Console.WriteLine(commaSeparated);
-        }
-
-
-
         public static int[] RerollDice(int[] playerHand)
         {
-            Dice dice = new Dice();
             int playerHandLength = playerHand.Length;
             string currentInput = "";
 
@@ -156,6 +139,19 @@
 
 
 
+        public static void DisplayHand(int[] playerHand)
+        {
+            string commaSeparated = "";
+            foreach (int value in playerHand)
+            {
+                commaSeparated += value + ", ";
+            }
+            commaSeparated = commaSeparated.TrimEnd(',', ' ');
+            Console.WriteLine(commaSeparated);
+        }
+
+
+
         public static (string, int) CheckValidInput(int[] playerHand)
         {
             string currentInput = "";
@@ -164,7 +160,7 @@
 
             do
             {
-                currentInput = Console.ReadLine();
+                currentInput = Console.ReadLine().ToLower();
                 switch (currentInput)
                 {
                     case "aces":
